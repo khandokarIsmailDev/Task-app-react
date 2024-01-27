@@ -18,6 +18,8 @@ const TaskBoard = () => {
     const [tasks,setTasks] = useState(allData)
     console.log(tasks)
 
+    //for search
+    const [originalTasks, setOriginalTasks] = useState([...tasks]);
   
 
     function handleEditModal(){
@@ -59,6 +61,19 @@ const TaskBoard = () => {
         ])
     }
 
+    function handleSearch(searchText){
+        const searchFilter = tasks.filter(task => task.title.toLowerCase().includes(searchText.toLowerCase()))
+        if(searchText.trim() === ''){
+            console.log(searchText)
+            setTasks(originalTasks)
+        }else{
+            setTasks([...searchFilter])
+        }
+
+        // console.log("ai holo :" + searchText)
+        
+    }
+
   return (
     <>
     {
@@ -70,7 +85,7 @@ const TaskBoard = () => {
     <section className="mb-20" id="tasks">
       <div className="container">
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-          <TaskAction editModal={handleEditModal} AllDelete={handleAllDelete} />
+          <TaskAction editModal={handleEditModal} AllDelete={handleAllDelete} onSearch={handleSearch} />
           {
             tasks.length !== 0 ? (<TaskList tasks={tasks} setShowModal={setShowModal} onDelete={handleDelete} />) : (<p className="just justify-center flex font-bold text-3xl">Please Add Task !</p>)
           }
