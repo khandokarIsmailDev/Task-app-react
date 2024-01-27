@@ -1,19 +1,8 @@
 import { useContext } from "react";
-import { TaskContext } from "../../context";
 
-const TaskAction = ({setShoModal}) => {
-  //global state
-  const {taskData,setTaskData} = useContext(TaskContext)
-
-  function handleShowModal(){
-    setShoModal(true)
-
-    //clear taskData
-    const removeItem = taskData.filter(task => task !== task)
-    setTaskData([...removeItem])
+const TaskAction = ({editModal,AllDelete}) => {
 
 
-}
 
   return (
     <div className="mb-14 items-center justify-between sm:flex">
@@ -54,11 +43,13 @@ const TaskAction = ({setShoModal}) => {
           </div>
         </form>
         <button className="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold"
-        onClick={handleShowModal}
+        onClick={editModal}
         >
           Add Task
         </button>
-        <button className="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold">
+        <button className="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold"
+        onClick={AllDelete}
+        >
           Delete All
         </button>
       </div>

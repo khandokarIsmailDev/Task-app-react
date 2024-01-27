@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 const App = () => {
-  const [taskData, setTaskData] = useState([]);
+  const [taskData, setTaskData] = useState(null);
 
   return (
     <>
