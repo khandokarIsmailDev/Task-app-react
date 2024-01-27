@@ -74,6 +74,14 @@ const TaskBoard = () => {
         
     }
 
+    function handleFavorite(taskId){
+        const taskIndex = tasks.findIndex(task=>task.id === taskId)
+    const newTask = [...tasks]
+    newTask[taskIndex].isFavorite = !newTask[taskIndex].isFavorite  // er mane toggle koralm value true hole false kore dilam , r false hole true kore dilam
+    setTasks(newTask)
+    console.log(taskId+'joij')
+    }
+
   return (
     <>
     {
@@ -87,7 +95,7 @@ const TaskBoard = () => {
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
           <TaskAction editModal={handleEditModal} AllDelete={handleAllDelete} onSearch={handleSearch} />
           {
-            tasks.length !== 0 ? (<TaskList tasks={tasks} setShowModal={setShowModal} onDelete={handleDelete} />) : (<p className="just justify-center flex font-bold text-3xl">Please Add Task !</p>)
+            tasks.length !== 0 ? (<TaskList tasks={tasks} onFav={handleFavorite} setShowModal={setShowModal} onDelete={handleDelete} />) : (<p className="just justify-center flex font-bold text-3xl">Please Add Task !</p>)
           }
           
         </div>

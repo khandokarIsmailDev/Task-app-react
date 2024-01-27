@@ -12,7 +12,8 @@ const Modal = ({onClose,onSave}) => {
     title:"",
     description:"",
     tags:[],
-    priority:""
+    priority:"",
+    isFavorite: false
   })
 
   const [error,setError] = useState({})
