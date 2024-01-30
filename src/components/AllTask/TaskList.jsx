@@ -3,20 +3,24 @@ import { TaskContext } from "../../context";
 import { IoIosStar } from "react-icons/io";
 
 const TaskList = ({ tasks, setShowModal, onDelete, onFav }) => {
-  const { taskData, setTaskData } = useContext(TaskContext);
+  const { state, dispatch } = useContext(TaskContext);
 
   function handleEditTask(task) {
     setShowModal(true);
-    setTaskData({
-      ...taskData,
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      tags: task.tags,
-      priority: task.priority,
-      isFavorite: task.isFavorite,
-    });
-    console.log(taskData);
+    dispatch({
+      type:"TASK_EDIT",
+      payload:task
+    })
+    // setTaskData({
+    //   ...taskData,
+    //   id: task.id,
+    //   title: task.title,
+    //   description: task.description,
+    //   tags: task.tags,
+    //   priority: task.priority,
+    //   isFavorite: task.isFavorite,
+    // });
+    console.log(state.taskData);
   }
 
   // console.log(taskData)

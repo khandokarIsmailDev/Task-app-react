@@ -5,9 +5,9 @@ import toast from "react-hot-toast";
 const Modal = ({onClose,onSave}) => {
 
     //global state
-    const {taskData,setTaskData} = useContext(TaskContext)
+    const {state,dispatch} = useContext(TaskContext)
 
-  const [formData,setFormData] = useState(taskData || {
+  const [formData,setFormData] = useState(state.taskData || {
     id:crypto.randomUUID(),
     title:"",
     description:"",
@@ -20,7 +20,7 @@ const Modal = ({onClose,onSave}) => {
 
   // console.log(formData)
 
-  const [isAdd, setIsAdd] = useState(Object.is(taskData, null))
+  const [isAdd, setIsAdd] = useState(Object.is(state.taskData, null))
 
 
 

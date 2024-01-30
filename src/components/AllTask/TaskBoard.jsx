@@ -9,7 +9,7 @@ import { allData } from "../../data/allData";
 
 const TaskBoard = () => {
 
-    const {taskData,setTaskData} = useContext(TaskContext)
+    const {state,dispatch} = useContext(TaskContext)
 
     //modal show hide state
     const [showModal,setShowModal] = useState(false)
@@ -24,7 +24,11 @@ const TaskBoard = () => {
 
     function handleEditModal(){
         setShowModal(true)
-        setTaskData(null)
+        dispatch({
+            type:"EDIT_MODAL",
+            payload:null
+        })
+        // setTaskData(null)
     }
 
     function handleCloseModal(){
@@ -56,9 +60,13 @@ const TaskBoard = () => {
 
     function handleAllDelete(){
         tasks.length = 0
-        setTaskData([
-            ...tasks
-        ])
+        dispatch({
+            type :"ALL_DELETE",
+            payload:tasks
+        })
+        // setTaskData([
+        //     ...tasks
+        // ])
     }
 
     function handleSearch(searchText){
