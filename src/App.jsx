@@ -14,9 +14,10 @@ const App = () => {
     <>
     <TaskContext.Provider value={{state,dispatch}}>
       <Toaster position="top-center" reverseOrder={false} />
-      <Page />
-      </TaskContext.Provider>
+      <Page /> 
+       </TaskContext.Provider>
     </>
+
   );
 };
 
